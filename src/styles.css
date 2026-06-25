@@ -1,0 +1,133 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-yellow: var(--brand-yellow);
+  --color-yellow-glow: var(--brand-yellow-glow);
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+  --brand-yellow: oklch(0.88 0.19 95);
+  --brand-yellow-glow: oklch(0.95 0.21 100);
+
+  --background: oklch(0.13 0.005 280);
+  --foreground: oklch(0.98 0.003 240);
+  --card: oklch(0.17 0.008 280);
+  --card-foreground: oklch(0.98 0.003 240);
+  --popover: oklch(0.15 0.008 280);
+  --popover-foreground: oklch(0.98 0.003 240);
+  --primary: oklch(0.88 0.19 95);
+  --primary-foreground: oklch(0.13 0.005 280);
+  --secondary: oklch(0.22 0.008 280);
+  --secondary-foreground: oklch(0.98 0.003 240);
+  --muted: oklch(0.22 0.008 280);
+  --muted-foreground: oklch(0.68 0.015 260);
+  --accent: oklch(0.25 0.01 280);
+  --accent-foreground: oklch(0.98 0.003 240);
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.98 0.003 240);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.88 0.19 95);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility glass {
+  background: color-mix(in oklab, var(--card) 55%, transparent);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid color-mix(in oklab, white 8%, transparent);
+}
+
+@utility glass-strong {
+  background: color-mix(in oklab, var(--card) 75%, transparent);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid color-mix(in oklab, white 10%, transparent);
+}
+
+@utility glow-yellow {
+  box-shadow:
+    0 0 30px -5px color-mix(in oklab, var(--brand-yellow) 60%, transparent),
+    0 0 80px -20px color-mix(in oklab, var(--brand-yellow) 40%, transparent);
+}
+
+@utility text-glow {
+  text-shadow: 0 0 30px color-mix(in oklab, var(--brand-yellow) 60%, transparent);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-pulse-ring { animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.animate-blink { animation: blink 1s steps(1) infinite; }
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, white 4%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, white 4%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 80%);
+}
