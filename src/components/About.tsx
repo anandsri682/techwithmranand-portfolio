@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import anand from "@/assets/image.jpeg";
+import anand from "@/assets/image.jpg";
 import { PROFILE } from "@/data/links";
 
 export function About() {
