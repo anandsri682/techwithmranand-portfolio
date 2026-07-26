@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FaYoutube, FaInstagram, FaWhatsapp } from "react-icons/fa";
-import anand from "@/assets/anand.jpg";
+import anand from "@/assets/image.jpeg";
 import { LINKS, PROFILE } from "@/data/links";
 
 const TITLES = ["Tech with Mr Anand", "Learn. Build. Grow.", "Tech • AI • Career"];

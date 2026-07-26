@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export function LoadingScreen() {
   const [done, setDone] = useState(false);
   useEffect(() => {
-    const t = setTimeout(() => setDone(true), 900);
+    const t = setTimeout(() => setDone(true), 400);
     return () => clearTimeout(t);
   }, []);
 
